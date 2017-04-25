@@ -12,7 +12,11 @@ This sample app uses Java comments to describe particular details in-code. Gener
 
 ### Recommended Resource Path Structure
 
+Choosing paths for your resources is not trivial task. Below, is a description of this App's resources and their paths. 
+
 The main resource in this app, defined in the ```ClassroomResource``` interface, is located on the path ```/cyrestbestpractices/v1/classroom/```. This resource will be registered as a root resource in CyREST and will be available at ```http://localhost:1234/cyrestbestpractices/v1/classroom/```. All of it's subresources will be visible as children of this path (for example, ```teacher``` will be registered with the path ```http://localhost:1234/cyrestbestpractices/v1/classroom/teacher```).
+
+These paths above were chosen according to the following best practices:
 
 #### Path Uniqueness
 

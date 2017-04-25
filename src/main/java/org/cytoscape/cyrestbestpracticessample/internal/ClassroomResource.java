@@ -5,17 +5,6 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 
-/*
- * This interface includes several JAX-RS annotations (Path, GET, and Produces) which help turn any implementation of it
- * into REST endpoints.
- * 
- * In addition, there is a single Swagger annotation (Api), which indicates that Swagger should include the endpoints in
- * the generated Swagger document (available at localhost:PORT/v1/swagger.json).
- * 
- * Note that you can add these annotations directly to an implementation as well; in this example we've merely separated
- * our API from our implementation.
- */
-
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -30,8 +19,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-
-@Api
+@Api(tags="Apps, Best Practices")
 @Path("/cyrestbestpractices/v1/classroom/")
 public interface ClassroomResource {
 
@@ -73,7 +61,7 @@ public interface ClassroomResource {
 	/* This method, like putTeacher, explicitly states the response type (response=Integer.class). However, since we are
 	 * in fact returning a List of Integer, Swagger supports a responseContainer field to indicate this.
 	 */
-	@ApiOperation(value = "Get a Student",
+	@ApiOperation(value = "Get a list of Student IDs",
 	notes = "Returns a list of IDs for all students enrolled in the class.",
 			response = Integer.class, responseContainer="List")
     @Path("students/")
@@ -101,7 +89,7 @@ public interface ClassroomResource {
 			notes = "Returns a the record of a student enrolled in the class.\n\n")
 			@ApiResponses(value = { 
 					@ApiResponse(code = 200, message = "Student added to class", response = Student.class),
-					@ApiResponse(code = 404, message = "Student is not enrolled in class", response = SimpleMessage.class),
+					@ApiResponse(code = 404, message = "Student is not enrolled in class", response = ErrorMessage.class),
 			})
     @Path("students/{studentId}")
     @GET
@@ -115,7 +103,7 @@ public interface ClassroomResource {
 					response = Student.class)
 			@ApiResponses(value = { 
 		    	@ApiResponse(code = 200, message = "Student deleted", response = Student.class),
-		    	@ApiResponse(code = 404, message = "Student is not enrolled in class", response = SimpleMessage.class),
+		    	@ApiResponse(code = 404, message = "Student is not enrolled in class", response = ErrorMessage.class),
 		    })
     @Path("students/{studentId}")
     @DELETE
@@ -130,7 +118,7 @@ public interface ClassroomResource {
     				response = Student.class)
     		@ApiResponses(value = { 
     				@ApiResponse(code = 200, message = "Student replaced", response = Student.class),
-    				@ApiResponse(code = 404, message = "Student is not enrolled in class", response = SimpleMessage.class),
+    				@ApiResponse(code = 404, message = "Student is not enrolled in class", response = ErrorMessage.class),
     		})
     @Path("students/{studentId}")
     @PUT

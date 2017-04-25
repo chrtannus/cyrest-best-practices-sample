@@ -82,7 +82,7 @@ public class ClassroomResourceImpl implements ClassroomResource
 	private static NotFoundException studentNotFoundInstance(Integer id) {
 		return new NotFoundException("Student not found", Response.status(Response.Status.NOT_FOUND)
 					.type(MediaType.APPLICATION_JSON)
-					.entity(new SimpleMessage("Student with ID " + id + " is not enrolled in this class.")).build());
+					.entity(new ErrorMessage("Student with ID " + id + " is not enrolled in this class.")).build());
 	}
 	
 	@Override

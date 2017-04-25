@@ -20,7 +20,10 @@ public class SimpleMessage
 {
 	String message;
 	
-	//Super important. Always have a default constructor for anything returned by a JAX-RS annotated method.
+	/*Super important. Since we have implemented an explicit constructor below, Java will not generate a default, no-arg
+	  constructor. Most JSON processors require a no-arg constructor to produce JSON from POJOs. Hence, we need to 
+	  create one.
+	*/
 	public SimpleMessage()
 	{
 		

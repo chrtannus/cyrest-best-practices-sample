@@ -53,9 +53,11 @@ public interface ClassroomResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Person putTeacher(
-    		 @ApiParam(value = "The new teacher data", required = true) Person teacher //The ApiParam annotation lets
-    		 //us add a brief explanation of what the parameter does. We can also specify a few useful features, like
-    		 //whether or not the parameter is required for method execution.
+    		 @ApiParam(value = "The new teacher data", required = true) //The ApiParam annotation lets us add a brief 
+    		 //explanation of what the parameter does. We can also specify a few useful features, like whether or not 
+    		 //the parameter is required for method execution.
+    		 Person teacher //This java parameter represents the message body of a request. JAX-RX expects one parameter 
+    		 //like this in every PUT/POST method. 
     );
     
 	/* This method, like putTeacher, explicitly states the response type (response=Integer.class). However, since we are
